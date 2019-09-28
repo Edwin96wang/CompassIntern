@@ -38,7 +38,7 @@ int hist_analyse()
 
     const char *cstr = path.c_str();
     struct dirent *ent;
-    set<int> removed_events = {70195, 70070};
+    set<int> removed_events = {69611, 70195, 70070};
     int Num_removed = removed_events.size();
 
     struct filenames_int
@@ -121,10 +121,19 @@ int hist_analyse()
     NonPrimVerticeNum_RunNum_integrated->SetXTitle("Run Number");
     NonPrimVerticeNum_RunNum_integrated->SetYTitle("NonPrimVerticeNum");
     
+    TH2D *Three_pion_mass_His = new TH2D("Three_pion_mass_His", "invariant mass of three charged pions", 
+                                            RunTime_range, RunTime_first-0.5, RunTime_last-0.5, 200, 0, 8.0);
+    Three_pion_mass_His->SetXTitle("Run Number");
+    Three_pion_mass_His->SetYTitle("invariant mass (GeV)");
+    Three_pion_mass_His->SetStats(false);
+    Three_pion_mass_His->SetOption("COLZ");
+
     TH2D *Total_invariant_mass_His = new TH2D("Total_invariant_mass_His", "invariant mass of pions and photons (photon energy cutoff 1&4 GeV)", 
                                             RunTime_range, RunTime_first-0.5, RunTime_last-0.5, 200, 0, 8.0);
     Total_invariant_mass_His->SetXTitle("Run Number");
     Total_invariant_mass_His->SetYTitle("invariant mass (GeV)");
+    Total_invariant_mass_His->SetStats(false);
+    Total_invariant_mass_His->SetOption("COLZ");
 
     // TGraph instantiation
     //three pion invariant mass:
@@ -189,6 +198,7 @@ int hist_analyse()
     int ii = 0;
     int bin_left = 0;
     int bin_right = 0;
+    double center_mass = 0.0;
     //looping through loops:
     for (int i = 0; i < filesize; i++)
     {
@@ -264,18 +274,33 @@ int hist_analyse()
 
         //three pion invariant mass:
         files[i]->GetObject("ThreePion_inv_mass", ThreePion_inv_mass);
-        ThreePion_inv_mass->GetQuantiles(3, yq, xq);
-        Three_pion_mass->SetPoint(ii, filenames[i].num, yq[1]);
-        Three_pion_mass->SetPointEYhigh(ii, yq[2] - yq[1]);
-        Three_pion_mass->SetPointEYlow(ii, yq[1] - yq[0]);
+        bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
+        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
+                //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
+        center_mass = (ThreePion_inv_mass->GetBinCenter(bin_right) + ThreePion_inv_mass->GetBinCenter(bin_left))/2;
+        Three_pion_mass->SetPoint(ii, filenames[i].num, center_mass);
+        bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
+        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
+        Three_pion_mass->SetPointEYhigh(ii, ThreePion_inv_mass->GetBinCenter(bin_right)-center_mass);
+        Three_pion_mass->SetPointEYlow(ii, center_mass-ThreePion_inv_mass->GetBinCenter(bin_left));
+        //2DHistogram:
+        for (int i_mass = 0; i_mass < inv_mass; i_mass++)
+        {
+            Three_pion_mass_His->SetBinContent(xbin, i_mass + 1, (int)(1000.0 * ThreePion_inv_mass->GetBinContent(i_mass + 1) / ThreePion_inv_mass->GetMaximum()));
+        }
 
         //total invariant mass:
         files[i]->GetObject("Total_inv_mass", Total_inv_mass);
-        Total_inv_mass->GetQuantiles(3, yq, xq);
-        //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
-        Total_invariant_mass->SetPoint(ii, filenames[i].num, yq[1]);
-        Total_invariant_mass->SetPointEYhigh(ii, yq[2] - yq[1]);
-        Total_invariant_mass->SetPointEYlow(ii, yq[1] - yq[0]);
+                //Total_inv_mass->GetQuantiles(3, yq, xq);
+        bin_left = Total_inv_mass->FindFirstBinAbove(Total_inv_mass->GetMaximum()*9.5/10);
+        bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*9.5/10);
+                //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
+        center_mass = (Total_inv_mass->GetBinCenter(bin_right) + Total_inv_mass->GetBinCenter(bin_left))/2;
+        Total_invariant_mass->SetPoint(ii, filenames[i].num, center_mass);
+        bin_left = Total_inv_mass->FindFirstBinAbove(Total_inv_mass->GetMaximum()*5/10);
+        bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*5/10);
+        Total_invariant_mass->SetPointEYhigh(ii, Total_inv_mass->GetBinCenter(bin_right)-center_mass);
+        Total_invariant_mass->SetPointEYlow(ii, center_mass-Total_inv_mass->GetBinCenter(bin_left));
         bin_left = Total_inv_mass->FindFirstBinAbove(Total_inv_mass->GetMaximum()/2);
         bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()/2);
         half_w_invMass->SetPoint(ii, filenames[i].num, Total_inv_mass->GetBinCenter(bin_right) - Total_inv_mass->GetBinCenter(bin_left));
@@ -349,6 +374,7 @@ int hist_analyse()
     NonPrimVerticeNum_RunNum_integrated     ->Write();
     Vertice3_over_Vertice1                  ->Write();
     Three_pion_mass                         ->Write();
+    Three_pion_mass_His                     ->Write();
     Total_invariant_mass                    ->Write();
     Total_invariant_mass_His                ->Write();
     half_w_invMass                          ->Write();
@@ -359,15 +385,30 @@ int hist_analyse()
     recProton_width                         ->Write();
     
 
-    //creating canvas1: invariance mass and ECAL1 percentage
     double range_right[2];
     double range_left[2];
-    TCanvas* c1 = new TCanvas("Inv_mass_ECAL_per","multigraph1",1500,800);
-    TMultiGraph* mg1 = new TMultiGraph("mg","invariance mass and ECAL1 percentage");
+
+    
+    //creating canvas5: FWHM and ECAL1 percentage
+    TCanvas* c5 = new TCanvas("FWHM_ECAL1_per","multigraph5",1500,800);
+    TMultiGraph* mg5 = new TMultiGraph("mg5","comparison between FWHM and ECAL1 percentage");
     range_right[0]=10;
     range_right[1]=60;
     range_left[0]=1;
     range_left[1]=5;
+    combine_TGraphs<TGraph*>(c5, mg5, range_left, range_right, half_w_invMass, ECAL_per,"FWHM","ECAL1 percentage");
+    c5->Write();
+    mg5->Write();
+
+
+    //creating canvas1: invariance mass and ECAL1 percentage
+    
+    TCanvas* c1 = new TCanvas("Inv_mass_ECAL_per","multigraph1",1500,800);
+    TMultiGraph* mg1 = new TMultiGraph("mg","invariance mass and ECAL1 percentage");
+    range_right[0]=10;
+    range_right[1]=60;
+    range_left[0]=0.5;
+    range_left[1]=4.5;
     combine_TGraphs<TGraphAsymmErrors*>(c1, mg1, range_left, range_right, Total_invariant_mass, ECAL_per,"Invariant mass with quantiles (68%)","Percentage (ECAL1)");
     c1->Write();
     mg1->Write();
@@ -377,8 +418,8 @@ int hist_analyse()
     TMultiGraph* mg2 = new TMultiGraph("mg2","invariance mass and ECAL1");
     range_right[0]=0;
     range_right[1]=1.5;
-    range_left[0]=1;
-    range_left[1]=5;
+    range_left[0]=0.5;
+    range_left[1]=4.5;
     combine_TGraphs<TGraphAsymmErrors*>(c2, mg2, range_left, range_right, Total_invariant_mass, ECAL1,"Invariant mass with quantiles (68%)","Photon number (ECAL1)");
     c2->Write();
     mg2->Write();
@@ -388,22 +429,24 @@ int hist_analyse()
     TMultiGraph* mg3 = new TMultiGraph("mg3","invariance mass and ECAL2");
     range_right[0]=0;
     range_right[1]=1.3;
-    range_left[0]=1;
-    range_left[1]=5;
+    range_left[0]=0.5;
+    range_left[1]=4.5;
     combine_TGraphs<TGraphAsymmErrors*>(c3, mg3, range_left, range_right, Total_invariant_mass, ECAL2,"Invariant mass with quantiles (68%)","Photon number (ECAL2)");
     c3->Write();
     mg3->Write();
 
-    //creating canvas3: invariance mass and ECAL2
+    //creating canvas4: invariance mass and ECAL2
     TCanvas* c4 = new TCanvas("Inv_mass_recoiled","multigraph4",1500,800);
     TMultiGraph* mg4 = new TMultiGraph("mg4","comparison of two widths");
-    range_right[0]=0;
+    range_right[0]=-2.5;
     range_right[1]=1.8;
     range_left[0]=1;
     range_left[1]=5;
     combine_TGraphs<TGraph*>(c4, mg4, range_left, range_right, half_w_invMass, recProton_width,"FWHM","width of recoilded proton at 23%");
     c4->Write();
     mg4->Write();
+
+    
 
     file_integrated->Close();
     return 0;
@@ -431,9 +474,10 @@ TGraph* move_graph_y(TGraph* g, double move){
 
 template<typename T>
 void combine_TGraphs(TCanvas* c, TMultiGraph* mg, double* range_left, double* range_right, T g1, TGraph* g2, string s1, string s2){
+    //cout << "left0: " << range_left[0] << " left1: " << range_left[1] << endl;
     g1->GetYaxis()->SetRangeUser(range_left[0],range_left[1]);
     g2->GetYaxis()->SetRangeUser(range_right[0], range_right[1]);
-    double ratio_trans = (range_left[1] - range_left[0]) / (range_right[1] - range_right[0]);
+    double ratio_trans = (double) (range_left[1] - range_left[0]) / (range_right[1] - range_right[0]);
     TGraph *new_g2 = Shrink_graph_y(g2, -range_right[0], ratio_trans);
     new_g2 = move_graph_y(new_g2, range_left[0]);
     new_g2->SetMarkerColor(2);
@@ -443,7 +487,7 @@ void combine_TGraphs(TCanvas* c, TMultiGraph* mg, double* range_left, double* ra
     c->SetGrid();
     mg->Add(g1);
     mg->Add(new_g2);
-    mg->GetYaxis()->SetRangeUser(1,5);
+    mg->GetYaxis()->SetRangeUser(range_left[0],range_left[1]);
     mg->GetXaxis()->SetTitle(g1->GetXaxis()->GetTitle());
     mg->GetYaxis()->SetTitle(g1->GetYaxis()->GetTitle());
     mg->Draw("apl");
