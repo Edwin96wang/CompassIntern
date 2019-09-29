@@ -388,7 +388,7 @@ int hist_analyse()
     double range_right[2];
     double range_left[2];
 
-    
+
     //creating canvas5: FWHM and ECAL1 percentage
     TCanvas* c5 = new TCanvas("FWHM_ECAL1_per","multigraph5",1500,800);
     TMultiGraph* mg5 = new TMultiGraph("mg5","comparison between FWHM and ECAL1 percentage");
