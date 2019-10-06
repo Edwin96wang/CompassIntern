@@ -99,38 +99,38 @@ int hist_analyse()
     // histograms instantiation
     TH2D *histo_integrate_spillnumber = new TH2D("histo_integrate_spillnumber", "event countings in certain Spillnum of certain runnumber",
                                                  RunTime_range, RunTime_first - 0.5, RunTime_last - 0.5, spillNum, -0.5, spillNum-0.5);
-    histo_integrate_spillnumber->SetXTitle("Run Number");
-    histo_integrate_spillnumber->SetYTitle("spillNum");
+    histo_integrate_spillnumber->SetXTitle("run number");
+    histo_integrate_spillnumber->SetYTitle("spill number");
 
     TH1D *EventNum_RunNum = new TH1D("EventNum_RunNum", "Event countings of the RunNumber", RunTime_range,  RunTime_first - 0.5, RunTime_last - 0.5);
-    EventNum_RunNum->SetXTitle("Run Number");
-    EventNum_RunNum->SetYTitle("Event counting");
+    EventNum_RunNum->SetXTitle("run rumber");
+    EventNum_RunNum->SetYTitle("event counting");
 
     TH2D *VerticeNum_RunNum_integrated = new TH2D("VerticeNum_RunNum_integrated",
                                                   "VerticeNumber through different run time", RunTime_range, RunTime_first-0.5, RunTime_last-0.5, VerticeNum, -0.5, VerticeNum-0.5);
-    VerticeNum_RunNum_integrated->SetXTitle("Run Number");
+    VerticeNum_RunNum_integrated->SetXTitle("run rumber");
     VerticeNum_RunNum_integrated->SetYTitle("VerticeNum");
 
     TH2D *PrimVerticeNum_RunNum_integrated = new TH2D("PrimVerticeNum_RunNum_integrated",
                                                       "PrimVerticeNumber through different run time", RunTime_range, RunTime_first-0.5, RunTime_last-0.5, VerticeNum, -0.5, VerticeNum-0.5);
-    PrimVerticeNum_RunNum_integrated->SetXTitle("Run Number");
+    PrimVerticeNum_RunNum_integrated->SetXTitle("run number");
     PrimVerticeNum_RunNum_integrated->SetYTitle("PrimVerticeNum");
 
     TH2D *NonPrimVerticeNum_RunNum_integrated = new TH2D("NonPrimVerticeNum_RunNum_integrated",
                                                          "NonPrimVerticeNumber through different run time", RunTime_range, RunTime_first-0.5, RunTime_last-0.5, VerticeNum, -0.5, VerticeNum-0.5);
-    NonPrimVerticeNum_RunNum_integrated->SetXTitle("Run Number");
+    NonPrimVerticeNum_RunNum_integrated->SetXTitle("run number");
     NonPrimVerticeNum_RunNum_integrated->SetYTitle("NonPrimVerticeNum");
     
     TH2D *Three_pion_mass_His = new TH2D("Three_pion_mass_His", "invariant mass of three charged pions", 
                                             RunTime_range, RunTime_first-0.5, RunTime_last-0.5, 200, 0, 8.0);
-    Three_pion_mass_His->SetXTitle("Run Number");
+    Three_pion_mass_His->SetXTitle("run number");
     Three_pion_mass_His->SetYTitle("invariant mass (GeV)");
     Three_pion_mass_His->SetStats(false);
     Three_pion_mass_His->SetOption("COLZ");
 
     TH2D *Total_invariant_mass_His = new TH2D("Total_invariant_mass_His", "invariant mass of pions and photons (photon energy cutoff 1&4 GeV)", 
                                             RunTime_range, RunTime_first-0.5, RunTime_last-0.5, 200, 0, 8.0);
-    Total_invariant_mass_His->SetXTitle("Run Number");
+    Total_invariant_mass_His->SetXTitle("run number");
     Total_invariant_mass_His->SetYTitle("invariant mass (GeV)");
     Total_invariant_mass_His->SetStats(false);
     Total_invariant_mass_His->SetOption("COLZ");
@@ -142,8 +142,8 @@ int hist_analyse()
     Three_pion_mass->SetMarkerStyle(21);
     Three_pion_mass->SetTitle("invariant mass of 3 pions");
     Three_pion_mass->SetName("Three_pion_mass");
-    Three_pion_mass->GetXaxis()->SetTitle("Run Number");
-    Three_pion_mass->GetYaxis()->SetTitle("s_3_pions (GeV)");
+    Three_pion_mass->GetXaxis()->SetTitle("run number");
+    Three_pion_mass->GetYaxis()->SetTitle("invariant mass (GeV)");
 
     //total invariant mass:
     TGraphAsymmErrors *Total_invariant_mass = new TGraphAsymmErrors(filesize - Num_removed);
@@ -151,7 +151,7 @@ int hist_analyse()
     Total_invariant_mass->SetMarkerStyle(21);
     Total_invariant_mass->SetTitle("invariant mass of pions and photons (photon energy cutoff 1&4 GeV)");
     Total_invariant_mass->SetName("Total_invariant_mass");
-    Total_invariant_mass->GetXaxis()->SetTitle("Run Number");
+    Total_invariant_mass->GetXaxis()->SetTitle("run number");
     Total_invariant_mass->GetYaxis()->SetTitle("invariant mass (GeV)");
 
     //ratio of Col2 to Col1:
@@ -160,7 +160,7 @@ int hist_analyse()
     ECAL_per->SetMarkerStyle(22);
     ECAL_per->SetTitle("Percentage of photons measured by ECAL1");
     ECAL_per->SetName("ECAL_per");
-    ECAL_per->GetXaxis()->SetTitle("Run Number");
+    ECAL_per->GetXaxis()->SetTitle("run number");
     ECAL_per->GetYaxis()->SetTitle("Percentage (%)");
 
     TGraph *ECAL1 = new TGraph(filesize - Num_removed);
@@ -168,7 +168,7 @@ int hist_analyse()
     ECAL1->SetMarkerStyle(22);
     ECAL1->SetTitle("photon number per event from ECAL1");
     ECAL1->SetName("ECAL1");
-    ECAL1->GetXaxis()->SetTitle("Run Number");
+    ECAL1->GetXaxis()->SetTitle("run number");
     ECAL1->GetYaxis()->SetTitle("Photon number");
 
     TGraph *ECAL2 = new TGraph(filesize - Num_removed);
@@ -176,7 +176,7 @@ int hist_analyse()
     ECAL2->SetMarkerStyle(22);
     ECAL2->SetTitle("photon number per event from ECAL2");
     ECAL2->SetName("ECAL2");
-    ECAL2->GetXaxis()->SetTitle("Run Number");
+    ECAL2->GetXaxis()->SetTitle("run number");
     ECAL2->GetYaxis()->SetTitle("Photon number");
 
     TGraph *half_w_invMass = new TGraph(filesize - Num_removed);
@@ -184,7 +184,7 @@ int hist_analyse()
     half_w_invMass->SetMarkerStyle(21);
     half_w_invMass->SetTitle("half width of invariant mass distribution");
     half_w_invMass->SetName("half_w_invMass");
-    half_w_invMass->GetXaxis()->SetTitle("Run Number");
+    half_w_invMass->GetXaxis()->SetTitle("run number");
     half_w_invMass->GetYaxis()->SetTitle("width (GeV)");
 
     TGraph *recProton_width = new TGraph(filesize - Num_removed);
@@ -192,13 +192,16 @@ int hist_analyse()
     recProton_width->SetMarkerStyle(22);
     recProton_width->SetTitle("width of recoil proton angular distribution at 23% of Max hight");
     recProton_width->SetName("recProton_width");
-    recProton_width->GetXaxis()->SetTitle("Run Number");
+    recProton_width->GetXaxis()->SetTitle("run number");
     recProton_width->GetYaxis()->SetTitle("width (GeV)");
 
     int ii = 0;
     int bin_left = 0;
     int bin_right = 0;
+    double pos_left = 0.0;
+    double pos_right = 0.0;
     double center_mass = 0.0;
+    gErrorIgnoreLevel = kWarning;
     //looping through loops:
     for (int i = 0; i < filesize; i++)
     {
@@ -274,11 +277,25 @@ int hist_analyse()
 
         //three pion invariant mass:
         files[i]->GetObject("ThreePion_inv_mass", ThreePion_inv_mass);
-        bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
-        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
-                //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
-        center_mass = (ThreePion_inv_mass->GetBinCenter(bin_right) + ThreePion_inv_mass->GetBinCenter(bin_left))/2;
-        Three_pion_mass->SetPoint(ii, filenames[i].num, center_mass);
+        bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*3/10);
+        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*3/10);
+        pos_left = ThreePion_inv_mass->GetBinCenter(bin_left);
+        pos_right = ThreePion_inv_mass->GetBinCenter(bin_right);
+        static TF1* f = new TF1("fit function", "[0]*(TMath::Gaus(x,[1],[2])+[3]*TMath::Gaus(x,[4],[5]))", pos_left, pos_right);
+        f->SetParameter(0,ThreePion_inv_mass->GetMaximum());
+        f->SetParameter(1,1);
+        f->SetParameter(2,1);
+        f->SetParameter(3,0.01);
+        f->FixParameter(4,1.49);
+        f->SetParameter(5,1);
+        f->SetParLimits(5, 0.01, 0.1);
+        ThreePion_inv_mass -> Draw();
+        ThreePion_inv_mass->Fit("fit function","RQ");
+        // bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
+        // bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
+        //         //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
+        // center_mass = (ThreePion_inv_mass->GetBinCenter(bin_right) + ThreePion_inv_mass->GetBinCenter(bin_left))/2;
+        Three_pion_mass->SetPoint(ii, filenames[i].num, f->GetParameter(1));
         bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
         bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
         Three_pion_mass->SetPointEYhigh(ii, ThreePion_inv_mass->GetBinCenter(bin_right)-center_mass);
@@ -345,7 +362,7 @@ int hist_analyse()
     Vertice3_over_Vertice1->SetName("Vertice3_over_Vertice1");
     Vertice3_over_Vertice1->SetMarkerColor(4);
     Vertice3_over_Vertice1->SetMarkerStyle(3);
-    Vertice3_over_Vertice1->GetXaxis()->SetTitle("Run Number");
+    Vertice3_over_Vertice1->GetXaxis()->SetTitle("run number");
     Vertice3_over_Vertice1->GetYaxis()->SetTitle("ratio");
 
     // looping through the histogram with runnumber
@@ -491,35 +508,6 @@ void combine_TGraphs(TCanvas* c, TMultiGraph* mg, double* range_left, double* ra
     mg->GetXaxis()->SetTitle(g1->GetXaxis()->GetTitle());
     mg->GetYaxis()->SetTitle(g1->GetYaxis()->GetTitle());
     mg->Draw("apl");
-    c->Update();
-    c->Modified();
-    TGaxis *axis = new TGaxis(gPad->GetUxmax(),range_left[0],gPad->GetUxmax(),range_left[1],range_right[0],range_right[1],510,"+L");
-    axis->SetLineColor(kRed);
-    axis->SetLabelColor(kRed);
-    axis->Draw();
-    axis->SetTitle(g2->GetYaxis()->GetTitle());
-    axis->SetTitleOffset(0.7);
-    axis->SetTitleColor(kRed);
-
-    auto legend = new TLegend(0.1, 0.7, 0.48, 0.9);
-    legend->AddEntry(g1, s1.c_str(), "lep");
-    legend->AddEntry(new_g2, s2.c_str());
-    legend->Draw();
-}
-
-template<typename T>
-void combine_his_graph(TCanvas* c, double* range_right, T g1, TGraph* g2, string s1, string s2){
-    double range_left[2] = {g1->GetYaxis()->GetXmin(), g1->GetYaxis()->GetXmax()};
-    double ratio_trans = (range_left[1] - range_left[0]) / (range_right[1] - range_right[0]);
-    TGraph *new_g2 = Shrink_graph_y(g2, -range_right[0], ratio_trans);
-    new_g2 = move_graph_y(new_g2, range_left[0]);
-    new_g2->SetMarkerColor(2);
-    new_g2->SetMarkerStyle(22);
-    new_g2->SetTitle(g2->GetTitle());
-    c->cd();
-    c->SetGrid();
-    g1->Draw("COLZ");
-    new_g2->Draw("PLSAME");
     c->Update();
     c->Modified();
     TGaxis *axis = new TGaxis(gPad->GetUxmax(),range_left[0],gPad->GetUxmax(),range_left[1],range_right[0],range_right[1],510,"+L");
