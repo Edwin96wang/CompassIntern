@@ -278,19 +278,25 @@ int hist_analyse()
         //three pion invariant mass:
         files[i]->GetObject("ThreePion_inv_mass", ThreePion_inv_mass);
         bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*3/10);
-        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*3/10);
+        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*5.7/10);
         pos_left = ThreePion_inv_mass->GetBinCenter(bin_left);
         pos_right = ThreePion_inv_mass->GetBinCenter(bin_right);
-        static TF1* f = new TF1("fit function", "[0]*(TMath::Gaus(x,[1],[2])+[3]*TMath::Gaus(x,[4],[5]))", pos_left, pos_right);
+        static TF1* f = new TF1("fit function", "[0]*TMath::Gaus(x,[1],[2])", pos_left, pos_right);
         f->SetParameter(0,ThreePion_inv_mass->GetMaximum());
         f->SetParameter(1,1);
+        f->SetParLimits(1, 0.5, 2);
         f->SetParameter(2,1);
-        f->SetParameter(3,0.01);
-        f->FixParameter(4,1.49);
-        f->SetParameter(5,1);
-        f->SetParLimits(5, 0.01, 0.1);
-        ThreePion_inv_mass -> Draw();
+        // f->SetParameter(3,0.01);
+        // f->FixParameter(4,1.49);
+        // f->SetParameter(5,1);
+        // f->SetParLimits(5, 0.01, 0.1);
+        // ThreePion_inv_mass -> Draw();
         ThreePion_inv_mass->Fit("fit function","RQ");
+        if (filenames[i].num == 70481)
+        {
+            cout << f->GetParameter(1) << endl;
+            ThreePion_inv_mass->Fit("fit function","R");
+        }
         // bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
         // bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
         //         //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
