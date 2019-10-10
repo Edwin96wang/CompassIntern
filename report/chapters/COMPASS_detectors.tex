@@ -1,5 +1,26 @@
 \section{Target and Detectors}
+COMPASS experiment comprises large number of detectors, for identifying and measuring the particles coming out of interaction vertices. There are also detectors which monitor the particle beams and trigger other components to decide when the signals should be read out or not. In this section, the basic functionalities of different kinds of detectors are introduced in a simple manner. 
+
+\begin{figure*}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{detector_layout}
+	\caption{The layout of COMPASS detectors. The length of whole setup is around 50 meters. Pion beam comes from the left side of detectors and hits the target, which is surrounded by recoil-proton detector (RPD). On the right side of target, two different sets of detectors are used to measure out-going particles with small and large scattering angles.}
+	\label{fig:detec_layout}	
+\end{figure*}
+
 \subsection{Particle beam and target}
-The proton beam, which is accelerated by the Super Proton Synchrotron, is directed into Beryllium. From the nuclear reaction between proton and Beryllium nucleus, a secondary hadron particle beam is created, which is the incoming particle beam for scattering experiment. In this project, the hadron beam is selected to be negative charged pion beam. But a small fraction of Kaon (\SI{2.4}{\percent}) can also exist in the incoming particle beam [ref]. The target, onto which pion beam is diverted, is liquid hydrogen stored in a \SI{40}{\centi\meter} height cylindrical container (see section )
+To create the projectile particle beam, the proton beam, which is accelerated by the Super Proton Synchrotron (SPS), is firstly directed into Beryllium. From the nuclear reaction between proton and Beryllium nucleus, a secondary hadron particle beam is created, which is the incoming particle beam for the scattering experiment. In this project, the hadron beam is selected to be negative charged pion beam. But a small fraction of Kaon (\SI{2.4}{\percent}) can also exist in the incoming particle beam [ref]. The proton target, onto which pion beam is diverted, is in form of liquid hydrogen stored in a \SI{40}{\centi\meter} height cylindrical container (see section ). 
+
 \subsection{Detector layout}
 
+\begin{figure}[!th]
+	\centering
+	\includegraphics[width=0.5\textwidth]{sandwich}
+	\caption{Scheme of detectors around the target region. The sandwich veto on the right prevent unmeasurable events with large scattering angles. Source: [ref]}
+	\label{fig:sandwich}
+\end{figure}
+
+The layout of COMPASS detectors is shown in figure \ref{fig:detec_layout}. Proton target is located inside the RPD (recoil-proton detector). On the left of target locate SciFi (scintillating fiber), BC (Beam counter) and silicon detectors. The coincidence of signals from SciFi and BC is used for the beam trigger, setting the time reference of whole system. The silicon detectors are applied for determining the location of projectile beam, which is further used to calculate the position of primary vertex. On the downstream very close to the target, there are sandwich veto and PixelGEM/Micromegas/DC (Pixel GEM detector, micromegas detectors and drift chamber). The function of sandwich veto is to reject the signal readout when the scattering angle of out-going particle is too large to measure. The structure of sandwich veto can be seen in figure \ref{fig:sandwich}, where the veto is triggered if scattering angle is out of acceptance.
+
+
+\clearpage
