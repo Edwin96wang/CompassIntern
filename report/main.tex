@@ -1,0 +1,69 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,yhmath}
+\usepackage{graphicx}
+\usepackage[formats]{listings}
+\usepackage[titletoc]{appendix}
+\usepackage{color}
+\usepackage[a4paper,top=3cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{tabu}
+\usepackage{subcaption}
+\usepackage[compact]{titlesec}
+\usepackage{multirow}
+\usepackage{abstract}
+
+\allowdisplaybreaks
+\lstdefineformat{C}{%
+	\{=\newline\string\newline\indent,%
+	\}=[;]\newline\noindent\string\newline,%
+	\};=\newline\noindent\string\newline,%
+	;=[\ ]\string\space}
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
+
+\graphicspath{{figs/}}
+
+\title{Internship report: stability test of 2008 COMPASS data }
+\author{Yanzhao Wang\thanks{Email: yanzhao960808@gmail.com}\\
+\textit{Bonn-Cologne Graduate School}\\
+\textit{Rheinische Friedrich-Wilhelms Universit$\Ddot{a}$t Bonn}}
+\date{October, 2019}
+
+\begin{document}
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+    \vspace{-0.8cm}
+    \begin{abstract}
+      \input{chapters/abstract}
+    \end{abstract}
+  \end{@twocolumnfalse}
+  ]
+\raggedbottom  
+\saythanks
+%Contents
+\input{chapters/introduction}
+\input{chapters/COMPASS_detectors}
+\input{chapters/data}
+\input{chapters/results}
+\input{chapters/conclusion}
+
+% BIBLIOGRAPHY
+\bibliographystyle{plain}
+\clearpage
+\bibliography{references}
+
+%Appendix
+%\cleardoublepage
+
+%\input{chapters/Appendix}
+\end{document}
+
+
