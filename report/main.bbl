@@ -1,3 +1,25 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{sandwich}
+P.~Abbon, C.~Adolph, R.~Akhunzyanov, et~al.
+\newblock The compass setup for physics with hadron beams.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 779:69 --
+  115, 2015.
+
+\bibitem{RICH}
+E.~Albrecht, G.~Baum, R.~Birsa, et~al.
+\newblock {COMPASS RICH}-1.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 504(1):354
+  -- 355, 2003.
+\newblock Proceedings of the 3rd International Conference on New Developments
+  in Photodetection.
+
+\bibitem{COMPASS}
+The~COMPASS Collaboration.
+\newblock Compass-\rom{2} proposal.
+\newblock Technical report, European Organization for Nuclear Research,
+  2010-05-17.
 
 \end{thebibliography}

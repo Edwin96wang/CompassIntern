@@ -5,7 +5,7 @@
 \usepackage[formats]{listings}
 \usepackage[titletoc]{appendix}
 \usepackage{color}
-\usepackage[a4paper,top=3cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=0.8cm,left=0.8cm,right=0.8cm,bottom=1.5cm,marginparwidth=1.75cm]{geometry}
 \usepackage{siunitx}
 \usepackage[version=4]{mhchem}
 \usepackage{csquotes}
@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{abstract}
 
+\newcommand*{\rom}[1]{\uppercase\expandafter{\romannumeral#1}}
 \allowdisplaybreaks
 \lstdefineformat{C}{%
 	\{=\newline\string\newline\indent,%
