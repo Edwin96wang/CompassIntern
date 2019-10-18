@@ -1,0 +1,42 @@
+\section{method of testing}
+The main method of stability testing is to check the values of multiple parameters in different runs and determine the abnormal runs by comparison. The most important characteristic parameters of testing is the invariant mass distribution of all out-going particles. The other parameters, such as photon number recorded by different ECALs, can also be used for the diagnosis of abnormalities. In the following subsections, different parameters are investigated for each run:
+
+\begin{figure*}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{event_spill_70171}
+		\caption{Run number 70171}
+		\label{fig:EveN_spill_normal}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{strange_spill_70195}
+		\caption{Run number 70195}
+		\label{fig:EveN_spill_abnormal}
+	\end{subfigure}
+	\caption{Temporal distribution of event numbers for each spill number. The color band represents the number of events per 0.3 seconds (time resolution) for each spill. The y axes represent the time from starting moment of each spill. (a) A normal temporal distribution (run number = 70171). The effective time expansion of particle beam is around 9s and distribution of each spill is centrally concentrated. (b) An abnormal temporal distribution (run number = 70195). Particle beam occurred in inactive time period.}
+	\label{fig:animals}
+\end{figure*}
+
+\begin{figure*}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{event_distribution_all}
+	\caption{Event distribution with respect to spill number of each run number. The color band shows the value of event counting in certain spill of certain run. The run number ranging from $69595 \sim 70963$ while the maximal of spill number cannot exceed above 200. The number of events can goes up to 18000 per spill whereas it could also amount to only few thousands or less, especially in the beginning of experiment. }
+	\label{fig:event_distribution_all}
+\end{figure*}
+
+\subsection{Number of events}
+The number of events for each run can be vastly different after the preselection. By using PHAST data analysis framework, the event number for each spill of every run is counted and plotted. Since incoming particle beam only exist in certain time interval of spill, event numbers are not spread throughout whole time period of the spill. From the figure \ref{fig:EveN_spill_normal}, one can easily see that normally events are only distributed on the time interval \SI{1.2}{\second} $\sim$ \SI{10.5}{\second} of the spill period. There is a short dead period of \SI{1.2}{\second} before the start of particle beam and a long inactive period after the stop of beam at \SI{10.5}{\second} until the end of spill (at around \SI{48}{\second}). However, as is shown in figure \ref{fig:EveN_spill_abnormal}, there exists one abnormal run, where the effective time interval of one spill is more than 2 times larger than the normal one. This shows that the particle beam occurs during the inactive time interval not only right at the beginning of spill (\SI{0}{\second} $\sim$ \SI{1.2}{\second}), but also after the first stop of beam (\SI{14.1}{\second} $\sim$ \SI{27.9}{\second}). Such abnormality could probably result from the trigger problem, due to which events are recorded with wrong time scale.
+
+After selecting out the run with abnormal temporal distribution discussed above, the number of events can be compared for each spill in every run, as is shown in figure \ref{fig:event_distribution_all}. The event number distribution is quite uneven throughout the experiment after the preselection. Runs in the beginning usually have low values of event counting and most of them don't have any event in some spills. Moreover, there exist large number of vacant runs with no events in all spills. Therefore, one can consider the number of events of each run as one of the characteristic parameters to test the stability of experiment. However, analyses such as invariant mass of three pion mass are independent from the number of events one have for each run. Thus, the variation of event distribution throughout the experiment could have little or no effect towards results of the analyses.
+
+\subsection{Vertex positions}
+The next parameter that could be investigated is the position of vertices.
+\subsection{Photon and energy cut}
+\subsection{Three pions invaraint mass}
+\subsection{Total invariant mass}
+\subsection{Recoil proton}
+\subsection{Correlation of abnormalities}
+
+\clearpage

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.10)  14 OCT 2019 00:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.10)  18 OCT 2019 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -939,12 +939,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--49
  []
 
 (./chapters/introduction.tex) (./chapters/COMPASS_detectors.tex
-<figs/detector_layout.png, id=44, 838.63312pt x 454.69875pt>
+<figs/detector_layout.png, id=76, 838.63312pt x 454.69875pt>
 File: figs/detector_layout.png Graphic file (type png)
 <use figs/detector_layout.png>
 Package pdftex.def Info: figs/detector_layout.png  used on input line 6.
 (pdftex.def)             Requested size: 551.9833pt x 299.27646pt.
-<figs/sandwich.png, id=45, 493.0922pt x 405.76593pt>
+<figs/sandwich.png, id=77, 493.0922pt x 405.76593pt>
 File: figs/sandwich.png Graphic file (type png)
 <use figs/sandwich.png>
 Package pdftex.def Info: figs/sandwich.png  used on input line 18.
@@ -960,7 +960,7 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 18--19
 ])
 (./chapters/data.tex [2 <./figs/detector_layout.png> <./figs/sandwich.png (PNG 
 copy)>]
-<figs/data_storage.png, id=76, 520.94624pt x 267.24844pt>
+<figs/data_storage.png, id=108, 520.94624pt x 267.24844pt>
 File: figs/data_storage.png Graphic file (type png)
 <use figs/data_storage.png>
 Package pdftex.def Info: figs/data_storage.png  used on input line 8.
@@ -972,31 +972,66 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 8--9
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
-[3 <./figs/data_storage.png>]) (./chapters/results.tex)
-(./chapters/conclusion.tex) [4
+<figs/feymann_diag.png, id=112, 886.31125pt x 582.175pt>
+File: figs/feymann_diag.png Graphic file (type png)
+<use figs/feymann_diag.png>
+Package pdftex.def Info: figs/feymann_diag.png  used on input line 30.
+(pdftex.def)             Requested size: 275.99165pt x 181.28964pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 30--31
+ [][] 
+ []
+
+) (./chapters/analysis.tex
+<figs/event_spill_70171.png, id=114, 700.6175pt x 475.7775pt>
+File: figs/event_spill_70171.png Graphic file (type png)
+<use figs/event_spill_70171.png>
+Package pdftex.def Info: figs/event_spill_70171.png  used on input line 7.
+(pdftex.def)             Requested size: 270.47484pt x 183.67944pt.
+<figs/strange_spill_70195.png, id=115, 700.6175pt x 475.7775pt>
+File: figs/strange_spill_70195.png Graphic file (type png)
+<use figs/strange_spill_70195.png>
+Package pdftex.def Info: figs/strange_spill_70195.png  used on input line 14.
+(pdftex.def)             Requested size: 270.47484pt x 183.67944pt.
+<figs/event_distribution_all.png, id=116, 1503.6175pt x 527.9725pt>
+File: figs/event_distribution_all.png Graphic file (type png)
+<use figs/event_distribution_all.png>
+Package pdftex.def Info: figs/event_distribution_all.png  used on input line 24
+.
+(pdftex.def)             Requested size: 551.9833pt x 193.82414pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3 <./figs/data_storage.png> <./figs/feymann_diag.png>] [4 <./figs/event_spill_
+70171.png> <./figs/strange_spill_70195.png> <./figs/event_distribution_all.png 
+(PNG copy)>] [5
+
+]) (./chapters/Results_and_discussion.tex)
+(./chapters/conclusion.tex) [6
 
 
 ] (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
- [5
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
+ [7
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 006FB5B2ACD71CD2543DDBF92F47670A;585.
+(rerunfilecheck)             Checksum: E9BBCD42C117E6B702572E36EC52C009;1134.
  ) 
 Here is how much of TeX's memory you used:
- 24676 strings out of 492166
- 453846 string characters out of 6125361
- 577081 words of memory out of 5000000
- 28801 multiletter control sequences out of 15000+600000
+ 24742 strings out of 492166
+ 455339 string characters out of 6125361
+ 581472 words of memory out of 5000000
+ 28851 multiletter control sequences out of 15000+600000
  545672 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,13n,67p,1333b,841s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,13n,67p,1370b,841s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1005,16 +1040,17 @@ usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
 local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (5 pages, 375032 bytes).
+l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (7 pages, 492693 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 

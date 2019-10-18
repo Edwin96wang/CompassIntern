@@ -319,7 +319,7 @@ int hist_analyse()
         bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*9.5/10);
                 //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
         center_mass = (Total_inv_mass->GetBinCenter(bin_right) + Total_inv_mass->GetBinCenter(bin_left))/2;
-        Total_invariant_mass->SetPoint(ii, filenames[i].num, center_mass);
+        Total_invariant_mass->SetPoint(ii, f.qilenames[i].num, center_mass);
         bin_left = Total_inv_mass->FindFirstBinAbove(Total_inv_mass->GetMaximum()*5/10);
         bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*5/10);
         Total_invariant_mass->SetPointEYhigh(ii, Total_inv_mass->GetBinCenter(bin_right)-center_mass);
