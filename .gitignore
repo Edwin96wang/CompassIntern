@@ -1,2 +1,2 @@
-*.pdf
-*.log
+./report/*.pdf
+./report/*.log
