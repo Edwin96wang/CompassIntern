@@ -1,2 +1,2 @@
 ./report/*.pdf
-./report/*.log
+report/main.log
