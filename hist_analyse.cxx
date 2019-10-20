@@ -19,6 +19,8 @@ template<typename T>
 void combine_his_graph(TCanvas* c, double* range_right, T g1, TGraph* g2, string s1, string s2);
 //TH2D* shrink_TH2D_y(TH2D* his,double ymin, double ymax);
 
+
+
 int get_int(string t)
 {
     string s1 = "hist";
@@ -34,7 +36,7 @@ int get_int(string t)
 int hist_analyse()
 {
     DIR *dir;
-    string path = "/localhome/ywang/analysis_compass/hist";
+    string path = "./hist";
 
     const char *cstr = path.c_str();
     struct dirent *ent;
@@ -195,6 +197,8 @@ int hist_analyse()
     recProton_width->GetXaxis()->SetTitle("run number");
     recProton_width->GetYaxis()->SetTitle("width (GeV)");
 
+    
+
     int ii = 0;
     int bin_left = 0;
     int bin_right = 0;
@@ -274,29 +278,23 @@ int hist_analyse()
             }
             NonPrimVerticeNum_RunNum_integrated->SetBinContent(xbin, i_VerNum + 1, sum_VerticeNum);
         }
-
+        
         //three pion invariant mass:
         files[i]->GetObject("ThreePion_inv_mass", ThreePion_inv_mass);
         bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*3/10);
-        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*5.7/10);
+        bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*3 / 10);
         pos_left = ThreePion_inv_mass->GetBinCenter(bin_left);
         pos_right = ThreePion_inv_mass->GetBinCenter(bin_right);
-        static TF1* f = new TF1("fit function", "[0]*TMath::Gaus(x,[1],[2])", pos_left, pos_right);
-        f->SetParameter(0,ThreePion_inv_mass->GetMaximum());
-        f->SetParameter(1,1);
-        f->SetParLimits(1, 0.5, 2);
-        f->SetParameter(2,1);
-        // f->SetParameter(3,0.01);
-        // f->FixParameter(4,1.49);
-        // f->SetParameter(5,1);
-        // f->SetParLimits(5, 0.01, 0.1);
-        // ThreePion_inv_mass -> Draw();
+        TF1* f = new TF1("fit function", "[0]*(TMath::Gaus(x,[1],[2])+[3]*TMath::Gaus(x,[4],[5]))", pos_left, pos_right);
+        f->SetParameter(0, ThreePion_inv_mass->GetMaximum());
+        f->SetParameter(1, 1);
+        f->SetParameter(2, 1);
+        f->SetParameter(3, 0.01);
+        f->FixParameter(4, 1.49);
+        f->SetParameter(5, 1);
+        f->SetParLimits(5, 0.01, 0.1);
         ThreePion_inv_mass->Fit("fit function","RQ");
-        if (filenames[i].num == 70481)
-        {
-            cout << f->GetParameter(1) << endl;
-            ThreePion_inv_mass->Fit("fit function","R");
-        }
+        
         // bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
         // bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*9.5/10);
         //         //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
@@ -304,8 +302,14 @@ int hist_analyse()
         Three_pion_mass->SetPoint(ii, filenames[i].num, f->GetParameter(1));
         bin_left = ThreePion_inv_mass->FindFirstBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
         bin_right = ThreePion_inv_mass->FindLastBinAbove(ThreePion_inv_mass->GetMaximum()*5/10);
-        Three_pion_mass->SetPointEYhigh(ii, ThreePion_inv_mass->GetBinCenter(bin_right)-center_mass);
-        Three_pion_mass->SetPointEYlow(ii, center_mass-ThreePion_inv_mass->GetBinCenter(bin_left));
+        Three_pion_mass->SetPointEYhigh(ii, ThreePion_inv_mass->GetBinCenter(bin_right)-f->GetParameter(1));
+        Three_pion_mass->SetPointEYlow(ii, f->GetParameter(1)-ThreePion_inv_mass->GetBinCenter(bin_left));
+        if (filenames[i].num == 70654)
+        {
+            cout << f->GetParameter(1) << endl;
+            cout << ThreePion_inv_mass->GetBinCenter(bin_right)-f->GetParameter(1) << endl;
+            cout << f->GetParameter(1)-ThreePion_inv_mass->GetBinCenter(bin_left)<< endl;
+        }
         //2DHistogram:
         for (int i_mass = 0; i_mass < inv_mass; i_mass++)
         {
@@ -319,7 +323,7 @@ int hist_analyse()
         bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*9.5/10);
                 //cout << "ii: " << ii << "filenumber: " << filenames[i].num << "value: " << yq[1] << endl;
         center_mass = (Total_inv_mass->GetBinCenter(bin_right) + Total_inv_mass->GetBinCenter(bin_left))/2;
-        Total_invariant_mass->SetPoint(ii, f.qilenames[i].num, center_mass);
+        Total_invariant_mass->SetPoint(ii, filenames[i].num, center_mass);
         bin_left = Total_inv_mass->FindFirstBinAbove(Total_inv_mass->GetMaximum()*5/10);
         bin_right = Total_inv_mass->FindLastBinAbove(Total_inv_mass->GetMaximum()*5/10);
         Total_invariant_mass->SetPointEYhigh(ii, Total_inv_mass->GetBinCenter(bin_right)-center_mass);
@@ -389,8 +393,8 @@ int hist_analyse()
         Vertice3_over_Vertice1->SetPoint(ii, filenames[i].num, ratio_vertex);
         ii++;
     }
-
-    TFile *file_integrated = new TFile("/localhome/ywang/analysis_compass/hist_integrated.root", "recreate");
+    
+    TFile *file_integrated = new TFile("hist_integrated.root", "recreate");
     histo_integrate_spillnumber             ->Write();
     VerticeNum_RunNum_integrated            ->Write();
     PrimVerticeNum_RunNum_integrated        ->Write();
@@ -407,11 +411,12 @@ int hist_analyse()
     EventNum_RunNum                         ->Write();
     recProton_width                         ->Write();
     
-
+    file_integrated->Close();
+/*
     double range_right[2];
     double range_left[2];
 
-
+       
     //creating canvas5: FWHM and ECAL1 percentage
     TCanvas* c5 = new TCanvas("FWHM_ECAL1_per","multigraph5",1500,800);
     TMultiGraph* mg5 = new TMultiGraph("mg5","comparison between FWHM and ECAL1 percentage");
@@ -435,7 +440,7 @@ int hist_analyse()
     combine_TGraphs<TGraphAsymmErrors*>(c1, mg1, range_left, range_right, Total_invariant_mass, ECAL_per,"Invariant mass with quantiles (68%)","Percentage (ECAL1)");
     c1->Write();
     mg1->Write();
-
+    
     //creating canvas2: invariance mass and ECAL1
     TCanvas* c2 = new TCanvas("Inv_mass_ECAL1","multigraph2",1500,800);
     TMultiGraph* mg2 = new TMultiGraph("mg2","invariance mass and ECAL1");
@@ -470,8 +475,9 @@ int hist_analyse()
     mg4->Write();
 
     
+ */
 
-    file_integrated->Close();
+    
     return 0;
 }
 
