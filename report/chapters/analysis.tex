@@ -55,25 +55,95 @@ The next parameter that could be investigated is the position of vertices. The l
 As has been discussed in subsection \ref{subsec:data_preselection}, the events after preselection contain either one charged track or three charged tracks. Event containing one charged track corresponds to elastic scattering while event with three charged tracks to inelastic scattering. In case of elastic scattering, since there is only one out-going particle track and one incoming particle track, all vertices being reconstructed are primary vertices. On the other hand, non-primary vertices could exists in inelastic scattering. This can be better explained by vertices position in figure \ref{fig:ver_pos}. The first graph, figure \ref{fig:Prim_vertex_70171}, shows the primary vertex position. As one can easily see, most of the vertex positions are on the liquid hydrogen target, which located at around $\SI{-1.4}{\centi\meter} \sim \SI{1.5}{\centi\meter}$ in x direction and $\SI{-1.5}{\centi\meter} \sim \SI{1.3}{\centi\meter}$ in y direction. Additional, there is halo shaped vertex points surrounding the target. The reason behind this strange shape is the elastic scattering between the $\pi$ beam and container of liquid hydrogen. From the vertices distribution on the target region, one can see that the particle density of the beam is Gaussian distributed in the cross section. There are more incoming particles in the central area of the beam than the peripheral area, leading to the decreasing the vertex number in the outward direction. But when the beam hits the metallic container, the vertex number surges due to the increase of elastic scattering cross-section between $\pi$ and metallic nucleus. Therefore, the vertices on the halo are most likely to be the primary vertices. This can be further proved when one checks the position of non-primary vertices. In figure \ref{fig:sec_vertex_70171}, the strange halo structure disappears, which indicates that most of events with three out-going particles corresponds to the inelastic scattering between the pion beam and hydrogen target.  
 
 \subsection{Three pions invaraint mass}
-The most obvious parameter that can be used to determine the instability should be the invariant mass distribution of three out-going pions of each run. 
+The most obvious parameter that can be used to determine the instability should be the invariant mass distribution of three out-going pions of each run, as is shown in figure \ref{fig:Three_pion_mass_his}. Since the total number of events in each run is significantly different, invariant mass distribution is normalized so that the maximal value of distribution for each run has the same value (1000). By such normalization, one can easily notice that positions of maximal value for each run are almost the same. If an individual run is extracted by doing the y projection of certain run number, the detailed shape of three pion invariant mass distribution can be obtained (see figure \ref{fig:Three_pion_mass_fitting}). The first peak locates around \SI{1.3}{\giga\electronvolt}, which is followed by a small second peak around \SI{1.67}{\giga\electronvolt}. To test its stability throughout the whole runs, position of first peak is calculated by fitting the graph with following function:
+\begin{equation}
+f(x) = a_0 \cdot \Big(\mathcal{N}(a_1, a_2^2)+a_3 \cdot \mathcal{N}(a_4, a_5^2)\Big)
+\end{equation}
+where $\mathcal{N}(\mu,\sigma^2)$ represents the Gaussian distribution with mean value $\mu$ and standard deviation $\sigma$. $a_0$, $a_1$, $a_2$, $a_3$, $a_4$ and $a_5$ are six fitting parameters with initial values: $a_0 \sim$ maximal value, $a_1 \sim 1$, $a_2 \sim 1$, $a_3 \sim 0.01$ and $a_5 \sim 1$. Through trails and errors, $a_4$ is fixed to be 1.49 to optimize the fitting curve for first peak.
 
-\begin{figure*}[!t]
+\begin{figure*}[!ht]
 	\centering
+	\vspace{2cm}
 	\includegraphics[width=\textwidth]{Three_pion_mass_his}
-	\caption{Event distribution with respect to spill number of each run number. The color band shows the value of event counting in certain spill of certain run. The run number ranging from $69595 \sim 70963$ while the maximal of spill number cannot exceed above 200. The number of events can goes up to 18000 per spill whereas it could also amount to only few thousands or less, especially in the beginning of experiment. }
+	\caption{Histogram of invariant mass distribution of three pions for each run. The colors inside the histogram represent number of events corresponding to run number and invariant mass. To better compare and conceive the structure of distribution between runs visually, the maximal value of each distribution is normalized to 1000. As one can easily notice that maximal value or peak of distribution locates around \SI{1.3}{\giga\electronvolt} for almost every run.}
 	\label{fig:Three_pion_mass_his}
-\end{figure*}
-
-
-\begin{figure*}[!t]
-	\centering
+	\vspace{2 cm}
+	
 	\includegraphics[width=\textwidth]{Three_pion_mass_Graph}
-	\caption{Event distribution with respect to spill number of each run number. The color band shows the value of event counting in certain spill of certain run. The run number ranging from $69595 \sim 70963$ while the maximal of spill number cannot exceed above 200. The number of events can goes up to 18000 per spill whereas it could also amount to only few thousands or less, especially in the beginning of experiment. }
+	\caption{Comparison of primary peak position and half maximum from each run. The blue dots shows the value of fitting parameter $a_1$, which correspond to positions of primary peak. The error bar the range of half maximum. An abnormal run with run number equal to 69811 (denoted in red circle) can be easily spotted in this plot.}
 	\label{fig:Three_pion_mass_Graph}
+	\vspace{2cm}
 \end{figure*}
-\subsection{Photon and energy cut}
+
+\begin{figure*}[t!]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Three_pion_mass_fitting}
+		\caption{run number 70171}
+		\label{fig:Three_pion_mass_fitting}
+	\end{subfigure}
+	\begin{subfigure}{0.48\textwidth}
+		\includegraphics[width=\textwidth]{Three_pion_mass_69811}
+		\caption{run number 69811}
+		\label{fig:Three_pion_mass_69811}
+	\end{subfigure}
+	\caption{Invariant mass distribution of three pions and their corresponding fitting result. The range of fitting corresponds to \SI{30}{\percent} of maximal value of distribution. (a) Distribution of a normal run. The first peak (primary) locates at around \SI{1.3}{\giga\electronvolt}. The fitting curve (red) coincide well with data around primary peak, but poorly around second peak. (b) Distribution of an abnormal run. No second peak can be found on the right side of primary peak. Parameter $a_1$ is fitted to be \SI{1.034}{\giga\electronvolt}, which is slightly larger than correct value due to the bad fitting coincidence. }
+	\label{fig:pion_mass}
+\end{figure*}
+
+
+
+The fitting curve of a normal distribution is shown as the red curve in figure \ref{fig:Three_pion_mass_fitting}. Parameter $a_1$ is position of primary peak, which is fitted to be \SI{1.305}{\giga\electronvolt}. Figure \ref{fig:Three_pion_mass_Graph} shows the result after carrying out such fitting to each run and calculated the position value of primary peak as well as range of half maximum of corresponding distribution. One outliner can be easily identified (red circle in figure \ref{fig:Three_pion_mass_Graph}) with the run number equal to 69811. Figure \ref{fig:Three_pion_mass_69811} shows its corresponding distribution. It is not hard to discover that for run 69811, not only is there no noticeable second peak but also its primary peak shifts a little to the left side, which results in a smaller position value in figure \ref{fig:Three_pion_mass_Graph}.
 \subsection{Total invariant mass}
+The next parameter worth investigating is the invariant mass of all out-going particles, a.k.a out-going pions and photons. The four-momentum of pions can be obtained as in the same way as in last subsection. To obtain the four-momentum of photons, energy cuts are applied differently to two electromagnetic calorimeters (ECAL) and remaining photons are all assumed to come from primary vertex.
+\subsubsection{Photon energy cut}
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.5\textwidth]{photon_energy_cut}
+	\caption{Effect of energy cut of photons. On the x axis is the number of photons captured by both ECALS and on the y axis shows the number of events (entries) which have corresponding photon numbers. Blue line is the histogram of events without photon energy cut and red line events with photon energy cut. As can be seen easily that number of events with small number of photons are increased significantly after energy cut.}
+	\label{fig:photon_energy_cut}
+\end{figure}
+As has been discussed in subsection \ref{subsec:photon}, photons can also be emitted during the interaction. Different from the charged pions, which can leave tracks in tracking detector via ionization, photon has no charge and no track can be found. The only way to identify photons is by its energy deposits in ECAL. However, ECAL can only gives the energy of each photon and the direction of its momentum cannot be determined by any detectors in COMPASS experiment. Thus, the vertex which photon comes from cannot be determined neither. On the other hand, photons captured by ECALs could also come from the background instead of scattering vertex. Photons from background are mainly generated by bremsstrahlung between beam particles or outgoing pions and the material of detectors. Nevertheless, those background photons usually have a very small energy compared to those coming out of scattering vertices. Thus, to differentiate the photons from scattering vertices and photons from background, energy cuts are applied on the data coming from each calorimeter. Considering photons only coming from the scattering, since the photons detected by first ECAL (ECAL1) has larger scattering angle than those by ECAL2, energy deposits on the ECAL1 are generally smaller than on the ECAL2. Thus the energy cut for ECAL1 should be smaller than the cut for ECAL2, as is shown by following:
+
+\begin{center}
+	\begin{tabular}{c||c}
+		Calorimeter & Energy cut      \\
+		\hline
+		ECAL1       & \textgreater{}\SI{1}{\giga\electronvolt} \\
+		\hline
+		ECAL2       & \textgreater{}\SI{4}{\giga\electronvolt}
+	\end{tabular}
+\end{center}
+
+
+
+Photons with energy smaller than energy cut are selected out on both ECALs. The result of energy cut is shown in figure \ref{fig:photon_energy_cut}. As one can easily notice that, without energy cut, there are sufficient amount of events that could have more than 10 photons in totally detected by calorimeters, which is highly unlikely in scattering process. Once energy cuts are applied and photons with low energy being removed, almost all events have only less than 10 photons. Assuming all photons after energy cuts come from the primary vertex, 4-momentum of each photon can, thus, be obtained.
+\subsubsection{Total invariant mass}
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Total_mass_comp}
+	\caption{Comparison of normalized total invariant mass distribution between normal run and abnormal run. Both maximal value of both distribution are set to be 1000. On the x axis shows the value of total invariant mass and on the y axis shows the entries of corresponding value. FWHM is width of the range between two points, which corresponds to 500 value. As can be seen very clearly that the abnormal run (70650) has a much larger FWHM value than the normal run (70717).}
+	\label{fig:Total_mass_comp}
+\end{figure}
+Total invariant mass is a very important parameter, from which the mass of intermediate unknown resonance state X (in figure \ref{fig:feymann_diag}) can be calculated. If for each run, the physics in scattering process is same, total invariant mass should also be very stable. Figure \ref{fig:Total_mass_his} shows the normalized invariant mass distribution for each run. For most of runs, the maximal entries locate between around \SI{1}{\giga\electronvolt} to \SI{2}{\giga\electronvolt}. However, as can be already noticed in this 2 dimensional histograms, there are several runs which have much longer range of high entries (shown in red boxes). The detailed distribution structure of an normal run (run number 70717) is shown in figure \ref{fig:Total_mass_comp} (red line), compared with the structure from one of abnormal runs (run number 70650, blue line). One can immediately see that for abnormal run, it has a much bigger full width half maximal (FWHM) value than normal run. Both runs have first peak in same position. But for abnormal run, the entry value does not go down immediately after the place of second peak. To examine this phenomenon throughout the whole experiment, FWHM value is calculated for each run and drawn in figure \ref{fig:Total_mass_FWHM}. For most of runs, the values concentrate on the range between around \SI{1.4}{\giga\electronvolt} to \SI{1.8}{\giga\electronvolt}. But there also exist some outliners with much larger FWHM value up to \SI{3.5}{\giga\electronvolt}. On the other hand, some runs have slight smaller value, ranging from \SI{1.3}{\giga\electronvolt} to \SI{1.4}{\giga\electronvolt}.
+
+There are two possibilities resulting in this abnormal phenomenon. One is related to abnormality during the process of scattering. The other is related to the malfunction of calorimeters since the number of abnormal runs concerning total invariant mass is larger than the case of three pion invariant mass. The first could be checked directly by the recoil proton ($p'$ in figure \ref{fig:feymann_diag}).
+
+\begin{figure*}[!ht]
+	\centering
+	\vspace{2cm}
+	\includegraphics[width=\textwidth]{Total_mass_his}
+	\caption{Histogram of invariant total mass distribution. The colors inside the histogram represent number of events corresponding to the run number and invariant mass. To better compare and conceive the structure of distribution between runs visually, the maximal value of each distribution is normalized to 1000. In the red dashed rectangles, it can be seen that the red strokes are much longer than the normal runs.}
+	\label{fig:Total_mass_his}
+	\vspace{2 cm}
+	
+	\includegraphics[width=\textwidth]{Total_mass_FWHM}
+	\caption{Value of full width at half maximum of total invariant distribution for each run. Typical value of FWHM for normal run is around \SI{1.5}{\giga\electronvolt}.There are several outliners that have much bigger FWHM value than the general one. Also there is a range of runs 70223 $\sim$ 70240 that have slight smaller value of FWHM. }
+	\label{fig:Total_mass_FWHM}
+	\vspace{2cm}
+\end{figure*}
+
 \subsection{Recoil proton}
-
-
+As has been discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \ref{fig:sandwich}, recoil-proton detector is in cylindrical shape, surrounding the liquid hydrogen target. Any proton knocked out of the target would be directly detected by RPD. Unfortunately, same as for calorimeters, RPD can also not measure the momentum of captured protons but their energy. Thus, the vertex of recoil proton is assumed to be the primary vertex of the event.
 \clearpage
+

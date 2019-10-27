@@ -1,4 +1,4 @@
-void GraphProcess(){
+void ImaProFit(){
     TFile *file = new TFile("./hist/hist69811.root", "READ");
     //TFile *file = new TFile("./hist_integrated.root", "READ");
     TH1D* graph_data = nullptr;
@@ -23,11 +23,11 @@ void GraphProcess(){
     f->SetParameter(5, 1);
     f->SetParLimits(5, 0.01, 0.1);
     auto c1 = new TCanvas();
-    graph_data -> Draw();
+    //graph_data -> Draw();
     graph_data->Fit("fit function","R");
 
     // graph editting
-    TCanvas* canvas = new TCanvas("c","c",900,900);
+    TCanvas* canvas = new TCanvas("c","c",600,500);
     gStyle->SetPalette(55);
     gStyle->SetOptStat(0);
     graph_data->SetTitle("");
@@ -41,10 +41,12 @@ void GraphProcess(){
     graph_data->GetYaxis()->SetTitle("entries");
     graph_data->GetYaxis()->SetTitleSize(0.04);
     graph_data->GetYaxis()->SetLabelSize(0.04);
-    graph_data->GetYaxis()->SetTitleOffset(1.6);
+    graph_data->GetYaxis()->SetTitleOffset(1.8);
     
-    TPaletteAxis *palette = (TPaletteAxis*)graph_data->GetListOfFunctions()->FindObject("palette");
+    //TPaletteAxis *palette = (TPaletteAxis*)graph_data->GetListOfFunctions()->FindObject("palette");
     graph_data->Draw("COLZ");
-    canvas->SetBottomMargin(0.13);
+    canvas->SetBottomMargin(0.11);
     canvas->SetLeftMargin(0.13);
+    canvas->SetTopMargin(0.01);
+    canvas->SetRightMargin(0.01);
 }
