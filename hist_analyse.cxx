@@ -40,7 +40,7 @@ int hist_analyse()
 
     const char *cstr = path.c_str();
     struct dirent *ent;
-    set<int> removed_events = {69611, 70195, 70070};
+    set<int> removed_events = {69611, 70195, 70070, 70054};
     int Num_removed = removed_events.size();
 
     struct filenames_int
@@ -411,8 +411,8 @@ int hist_analyse()
     EventNum_RunNum                         ->Write();
     recProton_width                         ->Write();
     
-    file_integrated->Close();
-/*
+ 
+
     double range_right[2];
     double range_left[2];
 
@@ -424,22 +424,22 @@ int hist_analyse()
     range_right[1]=60;
     range_left[0]=1;
     range_left[1]=5;
-    combine_TGraphs<TGraph*>(c5, mg5, range_left, range_right, half_w_invMass, ECAL_per,"FWHM","ECAL1 percentage");
+    combine_TGraphs<TGraph*>(c5, mg5, range_left, range_right, half_w_invMass, ECAL_per,"FWHM","Photon percentage #alpha");
     c5->Write();
     mg5->Write();
 
 
-    //creating canvas1: invariance mass and ECAL1 percentage
+    // //creating canvas1: invariance mass and ECAL1 percentage
     
-    TCanvas* c1 = new TCanvas("Inv_mass_ECAL_per","multigraph1",1500,800);
-    TMultiGraph* mg1 = new TMultiGraph("mg","invariance mass and ECAL1 percentage");
-    range_right[0]=10;
-    range_right[1]=60;
-    range_left[0]=0.5;
-    range_left[1]=4.5;
-    combine_TGraphs<TGraphAsymmErrors*>(c1, mg1, range_left, range_right, Total_invariant_mass, ECAL_per,"Invariant mass with quantiles (68%)","Percentage (ECAL1)");
-    c1->Write();
-    mg1->Write();
+    // TCanvas* c1 = new TCanvas("Inv_mass_ECAL_per","multigraph1",1500,800);
+    // TMultiGraph* mg1 = new TMultiGraph("mg","invariance mass and ECAL1 percentage");
+    // range_right[0]=10;
+    // range_right[1]=60;
+    // range_left[0]=0.5;
+    // range_left[1]=4.5;
+    // combine_TGraphs<TGraph*>(c1, mg1, range_left, range_right, half_w_invMass, ECAL_per,"FWHM","Photon percentage #alpha");
+    // c1->Write();
+    // mg1->Write();
     
     //creating canvas2: invariance mass and ECAL1
     TCanvas* c2 = new TCanvas("Inv_mass_ECAL1","multigraph2",1500,800);
@@ -448,7 +448,7 @@ int hist_analyse()
     range_right[1]=1.5;
     range_left[0]=0.5;
     range_left[1]=4.5;
-    combine_TGraphs<TGraphAsymmErrors*>(c2, mg2, range_left, range_right, Total_invariant_mass, ECAL1,"Invariant mass with quantiles (68%)","Photon number (ECAL1)");
+    combine_TGraphs<TGraph*>(c2, mg2, range_left, range_right, half_w_invMass, ECAL1,"FWHM","Photon number (ECAL2)");
     c2->Write();
     mg2->Write();
 
@@ -459,24 +459,21 @@ int hist_analyse()
     range_right[1]=1.3;
     range_left[0]=0.5;
     range_left[1]=4.5;
-    combine_TGraphs<TGraphAsymmErrors*>(c3, mg3, range_left, range_right, Total_invariant_mass, ECAL2,"Invariant mass with quantiles (68%)","Photon number (ECAL2)");
+    combine_TGraphs<TGraph*>(c3, mg3, range_left, range_right, half_w_invMass, ECAL2,"FWHM","Photon number (ECAL2)");
     c3->Write();
     mg3->Write();
 
     //creating canvas4: invariance mass and ECAL2
     TCanvas* c4 = new TCanvas("Inv_mass_recoiled","multigraph4",1500,800);
     TMultiGraph* mg4 = new TMultiGraph("mg4","comparison of two widths");
-    range_right[0]=-2.5;
-    range_right[1]=1.8;
+    range_right[0]=-0.8;
+    range_right[1]=0.8;
     range_left[0]=1;
     range_left[1]=5;
     combine_TGraphs<TGraph*>(c4, mg4, range_left, range_right, half_w_invMass, recProton_width,"FWHM","width of recoilded proton at 23%");
     c4->Write();
     mg4->Write();
-
-    
- */
-
+    file_integrated->Close();
     
     return 0;
 }
@@ -531,7 +528,7 @@ void combine_TGraphs(TCanvas* c, TMultiGraph* mg, double* range_left, double* ra
     axis->SetTitleColor(kRed);
 
     auto legend = new TLegend(0.1, 0.7, 0.48, 0.9);
-    legend->AddEntry(g1, s1.c_str(), "lep");
+    legend->AddEntry(g1, s1.c_str(), "lp");
     legend->AddEntry(new_g2, s2.c_str());
     legend->Draw();
 }
