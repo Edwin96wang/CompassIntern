@@ -140,10 +140,30 @@ There are two possibilities resulting in this abnormal phenomenon. One is relate
 	\includegraphics[width=\textwidth]{Total_mass_FWHM}
 	\caption{Value of full width at half maximum of total invariant distribution for each run. Typical value of FWHM for normal run is around \SI{1.5}{\giga\electronvolt}.There are several outliners that have much bigger FWHM value than the general one. Also there is a range of runs 70223 $\sim$ 70240 that have slight smaller value of FWHM. }
 	\label{fig:Total_mass_FWHM}
-	\vspace{2cm}
+	\vspace{3cm}
 \end{figure*}
 
 \subsection{Recoil proton}
-As has been discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \ref{fig:sandwich}, recoil-proton detector is in cylindrical shape, surrounding the liquid hydrogen target. Any proton knocked out of the target would be directly detected by RPD. Unfortunately, same as for calorimeters, RPD can also not measure the momentum of captured protons but their energy. Thus, the vertex of recoil proton is assumed to be the primary vertex of the event.
-\clearpage
+\label{subsec:recoil_proton}
+As has been discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \ref{fig:sandwich}, recoil-proton detector is in cylindrical shape, surrounding the liquid hydrogen target. Any proton knocked out of the target would be directly detected by RPD. Unfortunately, same as for calorimeters, RPD can also not measure the momentum of captured protons but their energy. Thus, the vertex of recoil proton is assumed to be the primary vertex of the event. The scattering angle of recoil proton can be further calculated from capturing position on RPD and its corresponding primary vertex. Angular distribution of recoil proton is shown in figure \ref{fig:Recoil_proton_comp}. For both runs, the distributions peak at around $\theta=\SI{1.35}{\radian} = 77.35^{\circ}$, where $\theta$ is angle between the z direction of beam and momentum direction of out-going proton. The disparities between normal run and abnormal are shown in the lower half of the distribution. As for the abnormal run, a huge bump occurs on the left side of peak below \SI{45}{\percent} of maximal value, which can be reflected numerically by calculating the width of certain height, such as \SI{23}{\percent} of maximal value.
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Recoil_proton_comp}
+	\caption{Normalized angular distribution of recoil proton. On the x axis is $\theta$, which is the polar angle of out-going proton with respect to z direction of particle beam. Y axis shows the entries of events with the corresponding scattering angle. Red curve represents of a normal distribution from run number equal to 70717 and blue curve is an abnormal distribution from run number 70650. Both are normalized so that the maximal values are 1000. At \SI{23}{\percent} of maximal value (randomly chosen), two runs have significant value of width. }
+	\label{fig:Recoil_proton_comp}
+\end{figure}
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Recoil_proton_double_peak}
+	\caption{Angular distribution of recoil proton with run number equal to 70054. On the right side of primary peak occurs another small peak, which corresponds to situation that protons are recoiled nearly in the opposite direction of incoming pion beam. }
+	\label{fig:Recoil_proton_double_peak}
+\end{figure}
+
+
+The second type of abnormality (run number 70054) is shown in figure \ref{fig:Recoil_proton_double_peak}, where another peak occurs at the range $\SI{2.7}{\radian} \sim \SI{2.8}{\radian}$. Theoretically speaking, the scattering angle $\theta$ cannot be larger than $\pi/2$ for recoil proton since it cannot be hit backwards by the incoming pions. In the real case, the reconstruction of out-going particle tracks causes the uncertainty of primary vertex position and, thus, errors on scattering angle $\theta$. This is the reason why even for a normal run, it also contains small amount of events with proton being recoiled at angles slightly bigger than $\pi/2$. But for run number 70054, there are events where the recoil angles reach to $\SI{2.7}{\radian}$. One of explanations of this phenomenon is defect of triggers. Due to this recoil proton absorbed by RPD does not come from the primary vertex in its corresponding event and the false recoil angle is calculated. Therefore, the runs with such abnormality should be ruled out during analysis.
+
+
+
 
