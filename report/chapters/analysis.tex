@@ -1,18 +1,18 @@
 \section{Characteristic parameters}
-The main method of stability testing is to check the values of multiple parameters in different runs and determine the abnormal runs by identifying the outliners. The most important characteristic parameters is the invariant mass distribution of all out-going particles. The other parameters, such as photon number recorded by different ECALs, are also used for the diagnosis of abnormalities.
+The main method of stability testing is to check the values of multiple parameters in different runs and identify the outliners. In this project, relating parameters are extracted by a data analysis framework called PHAST (Physics Analysis Software Tools). It provides the access to reconstructed events information and tools of data processing.
 
 \begin{figure*}[!ht]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{event_spill_70171}
-		\caption{Run number 70171}
+		\caption{Run 70171}
 		\label{fig:EveN_spill_normal}
 	\end{subfigure}
 	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
 	%(or a blank line to force the subfigure onto a new line)
 	\begin{subfigure}[b]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{strange_spill_70195}
-		\caption{Run number 70195}
+		\caption{Run 70195}
 		\label{fig:EveN_spill_abnormal}
 	\end{subfigure}
 	\caption{Temporal distribution of event numbers for each spill number. The color band represents the number of events per 0.3 seconds (time resolution) for each spill. The y axes represent the time from starting moment of each spill. (a) A normal temporal distribution (run number = 70171). The effective time expansion of particle beam is around 9s and distribution of each spill is centrally concentrated. (b) An abnormal temporal distribution (run number = 70195). Particle beam occurred in inactive time period.}
@@ -52,45 +52,40 @@ The next parameter that could be investigated is the position of vertices. The l
 
 
 As discussed in subsection \ref{subsec:data_preselection}, events which survived the  preselection contain either one charged track or three charged tracks. Events containing one charged track correspond to elastic scattering while event with three charged tracks correspond to inelastic scattering. In case of elastic scattering, since there is only one out-going particle track and one incoming particle track, all vertices being reconstructed are primary vertices. On the other hand, non-primary vertices could only exists in inelastic scattering. This can be better explained by looking at the vertices position map shown in figure \ref{fig:ver_pos}. The first graph, figure \ref{fig:Prim_vertex_70171}, shows the primary vertex position. As one can easily see, most of the vertex positions are on the liquid hydrogen target, which is located at around $\SI{-1.4}{\centi\meter} \sim \SI{1.5}{\centi\meter}$ in x direction and $\SI{-1.5}{\centi\meter} \sim \SI{1.3}{\centi\meter}$ in y direction. Additional, there is halo shaped data points surrounding target. The cause behind this strange shape is elastic scattering between the $\pi$ beam and container of liquid hydrogen. From the vertices distribution on the center, one can see that the particle density of the beam is roughly Gaussian distributed in the cross section. In other words, there are more incoming particles in the central area of the beam than the peripheral area, leading to the decreasing of vertex density in the outward direction. But when the beam hits the metallic container, the vertex density surges due to the increase of elastic scattering of the beam $\pi^-$ and the container. Therefore, the vertices on the halo are most likely to be primary vertices with one $\pi^-$ going out. This can be further proved by checking the position of primary vertices with three outgoing particles. In figure \ref{fig:sec_vertex_70171}, the strange halo structure disappears, which indicates that most of events with three out-going particles corresponds to the inelastic scattering between the pion beam and hydrogen target.  
-
-\subsection{Three pions invaraint mass}
-The most obvious parameter that can be used for stability test should be the invariant mass distribution of three out-going pions, as is shown in figure \ref{fig:Three_pion_mass_his}. Since the total number of events in each run is significantly different, the invariant mass distribution is normalized so that the maximum value of the distribution is always equal to 1000. By such normalization, one can easily notice that the maximal value locates at the same place for each run. Looking at the $3\pi$ spectrum of a single run (figure \ref{fig:Three_pion_mass_fitting}), one can see a double peak structure. The first peak is located around \SI{1.3}{\giga\electronvolt}, which is followed by a small second peak around \SI{1.67}{\giga\electronvolt} on the right side. To test the stability of this throughout all analysis, the position of the first peak is determined by fitting the histogram with following function:
-\begin{equation}
-f(x) = a_0 \cdot \Big(\mathcal{N}(a_1, a_2^2)+a_3 \cdot \mathcal{N}(a_4, a_5^2)\Big)
-\end{equation}
-where $\mathcal{N}(\mu,\sigma^2)$ represents a Gaussian distribution with mean value $\mu$ and standard deviation $\sigma$. $a_0$, $a_1$, $a_2$, $a_3$, $a_4$ and $a_5$ are six fitting parameters with initial values: $a_0 \sim$ maximal value, $a_1 \sim 1$, $a_2 \sim 1$, $a_3 \sim 0.01$ and $a_5 \sim 1$. Through trail and errors, $a_4$ is fixed to be 1.49 to optimize the fitting curve for the first peak.
-
 \begin{figure*}[!ht]
 	\centering
-	\vspace{2cm}
+	\vspace{1cm}
 	\includegraphics[width=\textwidth]{Three_pion_mass_his}
 	\caption{Histogram of the three pion invariant mass for each run. The colors inside the histogram represent the number of events for each run and invariant mass. To better compare and conceive the structure of the distribution between runs visually, the maximal value of each distribution is normalized to 1000. As one can easily notice that maximal value or peak of distribution locates around \SI{1.3}{\giga\electronvolt} for almost every run.}
 	\label{fig:Three_pion_mass_his}
 	\vspace{2 cm}
 	
 	\includegraphics[width=\textwidth]{Three_pion_mass_Graph}
-	\caption{Comparison of primary peak position and half maximum range from each run. The blue dots shows the value of fitting parameter $a_1$, which correspond to positions of primary peak. The error bar the range of half maximum. An abnormal run with run number equal to 69811 (denoted in red circle) can be easily spotted in this plot.}
+	\caption{Comparison of primary peak position and half maximum range from each run. The blue dots shows the value of fitting parameter $a_1$, which correspond to positions of primary peak. The error bar the range of half maximum. An abnormal run 69811 (denoted in red circle) can be easily spotted in this plot.}
 	\label{fig:Three_pion_mass_Graph}
-	\vspace{2cm}
+	\vspace{3cm}
 \end{figure*}
-
+\subsection{Three pions invaraint mass}
 \begin{figure*}[t!]
 	\centering
 	\begin{subfigure}{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Three_pion_mass_fitting}
-		\caption{run number 70171}
+		\caption{run 70171}
 		\label{fig:Three_pion_mass_fitting}
 	\end{subfigure}
 	\begin{subfigure}{0.48\textwidth}
 		\includegraphics[width=\textwidth]{Three_pion_mass_69811}
-		\caption{run number 69811}
+		\caption{run 69811}
 		\label{fig:Three_pion_mass_69811}
 	\end{subfigure}
 	\caption{Three pion invariant mass distribution and their corresponding fit result. The fit range corresponds to \SI{30}{\percent} of of maximal value of the distribution. (a) Distribution of a normal run. The first peak (primary) locates at around \SI{1.3}{\giga\electronvolt}. The red curve matches data well  around the primary peak, but poorly around the second peak. (b) Distribution of an abnormal run. No second peak can be found on the right side of primary peak. Parameter $a_1$ is fitted to be \SI{1.034}{\giga\electronvolt}, which is slightly larger than a usual value due to the bad fit. }
 	\label{fig:pion_mass}
 \end{figure*}
-
-
+The most obvious parameter that can be used for stability test should be the invariant mass distribution of three out-going pions, as is shown in figure \ref{fig:Three_pion_mass_his}. Since the total number of events in each run is significantly different, the invariant mass distribution is normalized so that the maximum value of the distribution is always equal to 1000. By such normalization, one can easily notice that the maximal value locates at the same place for each run. Looking at the $3\pi$ spectrum of a single run (figure \ref{fig:Three_pion_mass_fitting}), one can see a double peak structure. The first peak is located around \SI{1.3}{\giga\electronvolt}, which is followed by a small second peak around \SI{1.67}{\giga\electronvolt} on the right side. To test the stability of this throughout all analysis, the position of the first peak is determined by fitting the histogram with following function:
+\begin{equation}
+f(x) = a_0 \cdot \Big(\mathcal{N}(a_1, a_2^2)+a_3 \cdot \mathcal{N}(a_4, a_5^2)\Big)
+\end{equation}
+where $\mathcal{N}(\mu,\sigma^2)$ represents a Gaussian distribution with mean value $\mu$ and standard deviation $\sigma$. $a_0$, $a_1$, $a_2$, $a_3$, $a_4$ and $a_5$ are six fitting parameters with initial values: $a_0 \sim$ maximal value, $a_1 \sim 1$, $a_2 \sim 1$, $a_3 \sim 0.01$ and $a_5 \sim 1$. Through trail and errors, $a_4$ is fixed to be 1.49 to optimize the fitting curve for the first peak.
 
 The fitting result of a typical distribution is shown as the red curve in figure \ref{fig:Three_pion_mass_fitting}. The position of the primary peak is related to the value of $a_1$, fitted to be \SI{1.305}{\giga\electronvolt}. Figure \ref{fig:Three_pion_mass_Graph} shows the result after carrying out such a fit for each run and calculating the position of primary peak as well as the full width at half maximum of corresponding distribution. One outliner, run number 69811, can easily be identified (the red circle in figure \ref{fig:Three_pion_mass_Graph}). Figure \ref{fig:Three_pion_mass_69811} shows its corresponding distribution. It is not hard to discover that there exists no noticeable second peak while its primary peak shifts a little to smaller values, which mirrors in the low value shown in figure \ref{fig:Three_pion_mass_Graph}.
 \subsection{Total invariant mass}
@@ -118,13 +113,13 @@ As discussed in subsection \ref{subsec:photon}, photons can also be emitted duri
 
 Photons with energy smaller than energy cut are selected out on both ECALs. The result of energy cut is shown in figure \ref{fig:photon_energy_cut}. As one can easily notice that, without energy cut, there are sufficient amount of events that could have more than 10 photons in total detected by calorimeters, which is highly unlikely in scattering process. Once energy cuts are applied and photons with low energy being removed, almost all events have only less than 10 photons. In the end, by assuming all photons after energy cuts come from the primary vertex, 4-momentum of each photon can, thus, be obtained.
 \subsubsection{Total invariant mass}
-\begin{figure}[!b]
+\begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Total_mass_comp}
 	\caption{Comparison of normalized total invariant mass distribution between normal run and abnormal run. Both maximal value of both distribution are set to be 1000. On the x axis shows the value of total invariant mass and on the y axis shows the entries of corresponding value. FWHM is width of the range between two points, which corresponds to 500 value. As can be seen very clearly that the abnormal run (70650) has a much larger FWHM value than the normal run (70717).}
 	\label{fig:Total_mass_comp}
 \end{figure}
-Total invariant mass is a very important parameter, which corresponds to the mass of intermediate unknown resonance state X (in figure \ref{fig:feymann_diag}). Figure \ref{fig:Total_mass_his} shows the normalized invariant mass distribution for each run. For most of runs, a clear peak can be seen between \SI{1}{\giga\electronvolt} to \SI{2}{\giga\electronvolt} while the spectrum falls afterwards. However, there are several runs which have much longer range of high entry value (shown in red boxes). The invariant mass distribution of an normal run (run number 70717) is shown in figure \ref{fig:Total_mass_comp} (red line), compared with that from an abnormal runs (run number 70650, blue line). One can immediately see that the abnormal run has a much bigger full width half maximum (FWHM) value than the normal run. Both runs have their first peak at the same position. But for the abnormal run, the number of entries does not go down immediately after second peak. To examine this phenomenon throughout the whole data, the FWHM value is calculated for each run (see figure \ref{fig:Total_mass_FWHM}). For most of runs, the high number of entries concentrate on the range between \SI{1.4}{\giga\electronvolt} and \SI{1.8}{\giga\electronvolt}. But some outliners can have much larger FWHM value up to \SI{3.5}{\giga\electronvolt}. On the other hand, some runs have a slightly smaller value, ranging from \SI{1.3}{\giga\electronvolt} to \SI{1.4}{\giga\electronvolt}.
+Total invariant mass is a very important parameter, which corresponds to the mass of intermediate unknown resonance state X (in figure \ref{fig:feymann_diag}). Figure \ref{fig:Total_mass_his} shows the normalized invariant mass distribution for each run. For most of runs, a clear peak can be seen between \SI{1}{\giga\electronvolt} to \SI{2}{\giga\electronvolt} while the spectrum falls afterwards. However, there are several runs which have much longer range of high entry value (shown in red boxes). The invariant mass distribution of an normal run (run 70717) is shown in figure \ref{fig:Total_mass_comp} (red line), compared with that from an abnormal runs (run number 70650, blue line). One can immediately see that the abnormal run has a much bigger full width half maximum (FWHM) value than the normal run. Both runs have their first peak at the same position. But for the abnormal run, the number of entries does not go down immediately after second peak. To examine this phenomenon throughout the whole data, the FWHM value is calculated for each run (see figure \ref{fig:Total_mass_FWHM}). For most of runs, the high number of entries concentrate on the range between \SI{1.4}{\giga\electronvolt} and \SI{1.8}{\giga\electronvolt}. But some outliners can have much larger FWHM value up to \SI{3.5}{\giga\electronvolt}. On the other hand, some runs have a slightly smaller value, ranging from \SI{1.3}{\giga\electronvolt} to \SI{1.4}{\giga\electronvolt}.
 
 Two possibilities comes to mind for this abnormal phenomenon. One is related to unexpected variation of initial scattering conditions of interaction process, such as energy of beams. The other is related to the malfunction of calorimeters because the reconstructed photons seems to be the main cause if one compares the abnormality of three pion invariant mass and total invariant mass . The first could be checked directly by the recoil proton ($p'$ in figure \ref{fig:feymann_diag}).
 
@@ -145,7 +140,7 @@ Two possibilities comes to mind for this abnormal phenomenon. One is related to 
 \subsection{Recoil proton}
 
 \label{subsec:recoil_proton}
-As discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \ref{fig:sandwich}, the recoil-proton detector has a cylindrical shape, surrounding the liquid hydrogen target. Any proton knocked out of the target would be directly detected by RPD. Unfortunately, same as for calorimeters, RPD can also not measure the momentum of captured protons but their energy. Thus, the vertex of recoil proton is assumed to be the primary vertex of the event. The scattering angle of recoil proton can be further calculated from capturing position on RPD and its corresponding primary vertex. Angular distribution of recoil proton is shown in figure \ref{fig:Recoil_proton_comp}. For both runs, the distributions peak at around $\theta=\SI{1.35}{\radian} = 77.35^{\circ}$, where $\theta$ is angle between the z direction and the momentum direction of the out-going proton. The disparities between the normal run and the abnormal run are shown in the lower half of the distribution. For the abnormal run, a huge bump occurs on the left side of the peak below \SI{45}{\percent} of the maximum value, which can be reflected numerically by calculating the width of a certain height, such as \SI{23}{\percent} of the maximum value.
+As discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \ref{fig:sandwich}, the recoil-proton detector has a cylindrical shape, surrounding the liquid hydrogen target. Any proton knocked out of the target would be directly detected by RPD. RPD contains two layers: inner layer and outer layer. Both layers can measure the time and location of recoil proton passing through. Energy or velocity of the recoil proton can be obtained by calculating time difference of two layers. However, to calculated the scattering angle of recoil proton (or recoil angle), except the locations measured by two layers of RPD, one must also know the position of primary vertex in the corresponding event. Angular distribution of recoil proton is shown in figure \ref{fig:Recoil_proton_comp}. For both runs, the distributions peak at around $\theta=\SI{1.35}{\radian} = 77.35^{\circ}$, where $\theta$ is angle between the z axis and the momentum direction of the out-going proton. The disparities between the normal run and the abnormal run are shown in the lower half of the distribution. For the abnormal run, a huge bump occurs on the left side of the peak below \SI{45}{\percent} of the maximum value, which can be reflected numerically by calculating the width of a certain height, such as \SI{23}{\percent} of the maximum value.
 
 \begin{figure}[!b]
 	\centering
@@ -194,7 +189,7 @@ As discussed in subsection \ref{subsec:Detector_layout} and depicted in figure \
 	\vspace{1cm}
 \end{figure*}
 
-The second type of abnormality (run number 70054) is shown in figure \ref{fig:Recoil_proton_double_peak}, where another peak occurs at about \SI{2.7}{\radian} to \SI{2.8}{\radian}. Theoretically speaking, the scattering angle $\theta$ cannot be larger than $\pi/2$ for the recoil proton since it cannot scatter backwards after being hit by a $\pi^-$. In reality, the reconstruction of the out-going particle tracks causes an uncertainty of primary vertex position and RPD reconstruction about recoil proton is also not very precise. Therefore, scattering angle $\theta$ has errors. This is the reason why even for a normal run, small amount of events contains the protons with recoiled at angles slightly bigger than $\pi/2$. For run number 70054 (shown in figure \ref{fig:Recoil_proton_double_peak}), there are even some recoil protons with recoil angles reaching to $\SI{2.7}{\radian}$. One of explanations of this phenomenon is a trigger defect. Due to this, primary vertex, which is used for calculating the recoil angle, is not in the same event of the corresponding recontructed recoil proton position. Therefore, the runs with such abnormality should be ruled out during analysis.
+The second type of abnormality (run 70054) is shown in figure \ref{fig:Recoil_proton_double_peak}, where another peak occurs at about \SI{2.7}{\radian} to \SI{2.8}{\radian}. Theoretically speaking, the scattering angle $\theta$ cannot be larger than $\pi/2$ for the recoil proton since it cannot scatter backwards after being hit by a $\pi^-$. In reality, the reconstruction of the out-going particle tracks causes an uncertainty of primary vertex position and RPD reconstruction about recoil proton is also not very precise. Therefore, scattering angle $\theta$ has errors. This is the reason why even for a normal run, small amount of events contains the protons with recoiled at angles slightly bigger than $\pi/2$. For run 70054\footnote[2]{The abnormal run 70054 is ruled out for the following analysis} (shown in figure \ref{fig:Recoil_proton_double_peak}), there are even some recoil protons with recoil angles reaching to $\SI{2.7}{\radian}$. One of explanations of this phenomenon is a trigger defect. Due to this, primary vertex, which is used for calculating the recoil angle, is not in the same event of the corresponding recontructed recoil proton position. Therefore, the runs with such abnormality should be ruled out during analysis.
 
 
 
